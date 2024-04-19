@@ -7,5 +7,5 @@ public interface IAccountService {
 
     void createAccount(CustomerDto customerDto);
 
-    Customer getAccountDetails(String mobileNumberad
+    Customer getAccountDetails(String mobileNumber
 }
