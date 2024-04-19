@@ -5,6 +5,7 @@ import com.devindev.account.dto.CustomerDto;
 import com.devindev.account.entity.Account;
 import com.devindev.account.entity.Customer;
 import com.devindev.account.exception.CustomerExistException;
+import com.devindev.account.exception.ResourceNotFoundException;
 import com.devindev.account.mapper.CustomerMapper;
 import com.devindev.account.repository.AccountRepository;
 import com.devindev.account.repository.CustomerRepository;
@@ -34,6 +35,13 @@ public class AccountServiceImpl implements IAccountService {
         customer.setCreatedBy("Anonymous");
         Customer saveCustomer = customerRepository.save(customer);
         accountRepository.save(createNewAccount(saveCustomer));
+    }
+
+    @Override
+    public Customer getAccountDetails(String mobileNumber) {
+        Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new ResourceNotFoundException("Customer", "mobileNumber", mobileNumber));
+
+        return customer;
     }
 
     private Account createNewAccount (Customer customer) {
