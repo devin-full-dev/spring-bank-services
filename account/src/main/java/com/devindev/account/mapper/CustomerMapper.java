@@ -5,9 +5,9 @@ import com.devindev.account.entity.Customer;
 
 public class CustomerMapper {
     public static CustomerDto mapEntityToDto(Customer customer, CustomerDto customerDto){
-        customerDto.setEmail(customerDto.getEmail());
-        customerDto.setName(customerDto.getName());
-        customerDto.setMobileNumber(customerDto.getMobileNumber());
+        customerDto.setEmail(customer.getEmail());
+        customerDto.setName(customer.getName());
+        customerDto.setMobileNumber(customer.getMobileNumber());
         return customerDto;
     }
 
